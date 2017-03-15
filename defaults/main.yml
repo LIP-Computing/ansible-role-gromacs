@@ -2,3 +2,7 @@
 # defaults file for ansible-role-gromacs
 cuda_run: cuda-linux64-rel-8.0.61-21551265.run
 cuda_url: http://www.lip.pt/~david/cuda/{{ cuda_run }}
+
+gromacs_version: gromacs-2016.3
+gromacs_tar: {{ gromacs_version }}.tar.gz
+gromacs_url: http://ftp.gromacs.org/pub/gromacs/{{ gromacs_tar }}

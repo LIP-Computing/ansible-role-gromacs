@@ -22,4 +22,42 @@
     - sudo
     - wget
 
+- name: Get CUDA
+  get_url: url={{ cuda_url }} dest=/tmp mode=700
 
+- name: Install CUDA
+  command: /tmp/{{ cuda_run }} -noprompt
+
+- name: Untar Gromacs
+  unarchive: src={{ gromacs_url }} dest=/tmp  owner=root group=root copy=no creates=/tmp/{{ gromacs_version }}
+
+- name: mkdir Gromacs build dir
+  file: path=/tmp/{{ gromacs_version }}/build state=directory
+
+- name: run cmake on Gromacs
+  command: cmake .. -DGMX_BUILD_OWN_FFTW=ON -DGMX_GPU=on chdir=/tmp/{{ gromacs_version }}/build
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/local/cuda-8.0/bin"
+    CXX: "/usr/bin/g++"
+    LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"
+
+- name: run make on Gromacs
+  command: make chdir=/tmp/{{ gromacs_version }}/build
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/local/cuda-8.0/bin"
+    CXX: "/usr/bin/g++"
+    LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"
+
+- name: run make check on Gromacs
+  command: make check chdir=/tmp/{{ gromacs_version }}/build
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/local/cuda-8.0/bin"
+    CXX: "/usr/bin/g++"
+    LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"
+
+- name: run make install on Gromacs
+  command: make install chdir=/tmp/{{ gromacs_version }}/build
+  environment:
+    PATH: "{{ ansible_env.PATH }}:/usr/local/cuda-8.0/bin"
+    CXX: "/usr/bin/g++"
+    LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"

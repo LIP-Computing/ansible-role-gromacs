@@ -1,4 +1,4 @@
 ---
 # defaults file for ansible-role-gromacs
-cuda_run:
-cuda_url: http://www.lip.pt/~david/cuda/
+cuda_run: cuda-linux64-rel-8.0.61-21551265.run
+cuda_url: http://www.lip.pt/~david/cuda/{{ cuda_run }}

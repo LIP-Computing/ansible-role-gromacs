@@ -1,2 +1,25 @@
 ---
 # tasks file for ansible-role-gromacs
+- name: Install necessary packages
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - build-essential
+    - cmake
+    - gcc
+    - g++
+    - git
+    - libatlas-dev
+    - libboost-all-dev
+    - libfreetype6-dev
+    - liblapack-dev
+    - module-init-tools
+    - pkg-config
+    - perl
+    - perl-doc
+    - python
+    - python-dev
+    - python-pip
+    - sudo
+    - wget
+
+

@@ -61,3 +61,5 @@
     PATH: "{{ ansible_env.PATH }}:/usr/local/cuda-8.0/bin"
     CXX: "/usr/bin/g++"
     LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"
+
+#- name: Remove tmp files (cuda and gromacs)

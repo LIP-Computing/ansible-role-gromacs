@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-role-gromacs
+cuda_run:
+cuda_url: http://www.lip.pt/~david/cuda/

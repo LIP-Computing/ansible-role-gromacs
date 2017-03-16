@@ -9,4 +9,4 @@ RUN ansible-galaxy install git+https://github.com/LIP-Computing/ansible-role-gro
 
 ENV PATH /usr/local/cuda-8.0/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
-RUN ["/bin/bash","-c","source /usr/local/gromacs/bin/GMXRC"]
+CMD ["/bin/bash","-c",". /usr/local/gromacs/bin/GMXRC.bash"]

@@ -12,3 +12,6 @@ ENV LD_LIBRARY_PATH /usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
 RUN echo "#!/bin/bash" > /usr/local/bin/GMXRC.sh && \
     cat /usr/local/gromacs/bin/GMXRC.bash >> /usr/local/bin/GMXRC.sh && \
     chmod 755 /usr/local/bin/GMXRC.sh
+
+# TO TRY
+# RUN echo source /usr/local/gromacs/bin/GMXRC >> .bashrc

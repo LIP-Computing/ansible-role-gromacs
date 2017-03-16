@@ -62,4 +62,10 @@
     CXX: "/usr/bin/g++"
     LD_LIBRARY_PATH: "/usr/local/cuda-8.0/lib64"
 
-#- name: Remove tmp files (cuda and gromacs)
+- name: Remove tmp files (nvidia, cuda and gromacs)
+  file: path={{ item }} state=absent
+  with_items:
+    - '/tmp/cuda-installer*'
+    - '/tmp/cuda-linux64-rel*.run'
+    - '/tmp/gromacs*'
+    - '/usr/local/NVIDIA-Linux-x86_64*'

@@ -64,8 +64,8 @@
 
 - name: Remove tmp files (nvidia, cuda and gromacs)
   file: path={{ item }} state=absent
-  with_items:
+  with_fileglob:
     - '/tmp/cuda-installer*'
     - '/tmp/cuda-linux64-rel*.run'
-    - '/tmp/gromacs*'
+    - '/tmp/gromacs-2016.3/*'
     - '/usr/local/NVIDIA-Linux-x86_64*'

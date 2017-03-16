@@ -6,3 +6,7 @@ LABEL description="Run Gromacs application"
 
 RUN ansible-galaxy install git+https://github.com/LIP-Computing/ansible-role-gromacs.git && \
     ansible-playbook /etc/ansible/roles/ansible-role-gromacs/tests/gromacs.yml
+
+ENV PATH /usr/local/cuda-8.0/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/cuda-8.0/lib64:$LD_LIBRARY_PATH
+ENTRYPOINT . /usr/local/gromacs/bin/GMXRC.bash

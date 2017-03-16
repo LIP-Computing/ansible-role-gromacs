@@ -1,5 +1,5 @@
-Role Name: ansible-role-gromacs
-===============================
+Docker and Ansible Role: ansible-role-gromacs
+=============================================
 
 Ansible role to deploy Gromacs with CUDA support
 
@@ -21,6 +21,13 @@ to previously install the nvidia driver
 
 Example Playbook
 ----------------
+
+Example of running the docker
+-----------------------------
+
+```
+docker run gromacs /bin/bash -c ". /usr/local/bin/GMXRC.sh; gmx -version"
+```
 
 License
 -------

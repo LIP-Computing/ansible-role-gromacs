@@ -7,6 +7,8 @@ LABEL description="Run Gromacs with CUDA enabled"
 RUN ansible-galaxy install git+https://github.com/LIP-Computing/ansible-role-gromacs.git && \
     ansible-playbook /etc/ansible/roles/ansible-role-gromacs/tests/gromacs.yml
 
+RUN apt-get install -y strace
+
 ENV GROMACS_DIR /usr/local/gromacs
 ENV GMXBIN $GROMACS_DIR/bin
 ENV GMXDATA $GROMACS_DIR/share/gromacs
